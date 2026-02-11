@@ -1,0 +1,32 @@
+{
+  "name": "backend-api-express",
+  "version": "1.0.0",
+  "description": "Backend API com Express, Prisma ORM e Zod.",
+  "keywords": [
+    "api",
+    "express",
+    "prisma",
+    "zod",
+    "mvc",
+    "middlewares"
+  ],
+  "homepage": "https://github.com/DanielPMorais/backend-api-express#readme",
+  "bugs": {
+    "url": "https://github.com/DanielPMorais/backend-api-express/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielPMorais/backend-api-express.git"
+  },
+  "license": "ISC",
+  "author": "Daniel Morais",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
