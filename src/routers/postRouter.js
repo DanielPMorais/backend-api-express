@@ -1,25 +1,16 @@
 import express from 'express';
+import { getPostsController } from '../controllers/post/getPostsController.js';
+import { createPostController } from '../controllers/post/createPostController.js';
+import { updatePostController } from '../controllers/post/updatePostController.js';
+import { updateTitlePostController } from '../controllers/post/updateTitlePostController.js';
+import { deletePostController } from '../controllers/post/deletePostController.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Exemplo de GET na rota /post');
-});
-
-router.post('/', (req, res) => {
-  res.send('Exemplo de POST na rota /post');
-});
-
-router.put('/', (req, res) => {
-  res.send('Exemplo de PUT na rota /post');
-});
-
-router.patch('/', (req, res) => {
-  res.send('Exemplo de PATCH na rota /post');
-});
-
-router.delete('/', (req, res) => {
-  res.send('Exemplo de DELETE na rota /post');
-});
+router.get('/', getPostsController);
+router.post('/', createPostController);
+router.put('/', updatePostController);
+router.patch('/', updateTitlePostController);
+router.delete('/', deletePostController);
 
 export default router;

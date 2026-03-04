@@ -1,25 +1,16 @@
 import express from 'express';
+import { getUsersController } from '../controllers/user/getUsersController.js';
+import { createUserController } from '../controllers/user/createUserController.js';
+import { updateUserController } from '../controllers/user/updateUserController.js';
+import { updateAvatarUserController } from '../controllers/user/updateAvatarUserController.js';
+import { deleteUserController } from '../controllers/user/deleteUserController.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Exemplo de GET na rota /user');
-});
-
-router.post('/', (req, res) => {
-  res.send('Exemplo de POST na rota /user');
-});
-
-router.put('/', (req, res) => {
-  res.send('Exemplo de PUT na rota /user');
-});
-
-router.patch('/', (req, res) => {
-  res.send('Exemplo de PATCH na rota /user');
-});
-
-router.delete('/', (req, res) => {
-  res.send('Exemplo de DELETE na rota /user');
-});
+router.get('/', getUsersController);
+router.post('/', createUserController);
+router.put('/', updateUserController);
+router.patch('/', updateAvatarUserController);
+router.delete('/', deleteUserController);
 
 export default router;
