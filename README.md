@@ -33,5 +33,5 @@
 
 - Modelo MVC
     - Model: define as regras de negócio, acesso aos dados (BD)
-    - view: exibe as informações para o usuário
-    - controller: 
+    - view: exibe as informações para o usuário (cadada do frontend)
+    - controller: controle do fluxo de entrada, processamento e saida dos dados
