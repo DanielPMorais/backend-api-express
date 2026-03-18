@@ -1,3 +1,3 @@
-export function updatePostController(req, res) {
+export function updatePublicationController(req, res) {
     res.send('Exemplo de PUT na rota /post respondendo com o controller');
 }

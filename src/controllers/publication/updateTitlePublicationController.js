@@ -1,3 +1,3 @@
-export function updateTitlePostController(req, res) {
+export function updateTitlePublicationController(req, res) {
     res.send('Exemplo de PATCH na rota /post respondendo com o controller');
 }
