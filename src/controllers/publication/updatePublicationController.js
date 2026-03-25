@@ -1,3 +1,13 @@
-export function updatePublicationController(req, res) {
-    res.send('Exemplo de PUT na rota /post respondendo com o controller');
-}
+import { updatePublication } from "../../models/publicationModel.js"
+
+export async function updatePublicationController(req, res) {
+    const { id } = req.params;
+    const publication = req.body;
+
+    const result = await updatePublication(publication, +id);
+
+    res.json({
+        message: 'Publicação atualizada com sucesso!',
+        user: result,
+    });
+}l

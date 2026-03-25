@@ -9,8 +9,8 @@ const router = express.Router();
 
 router.get('/', getPublicationsController);
 router.post('/', createPublicationController);
-router.put('/', updatePublicationController);
-router.patch('/', updateTitlePublicationController);
-router.delete('/', deletePublicationController);
+router.put('/:id', updatePublicationController);
+router.patch('/:id', updateTitlePublicationController);
+router.delete('/:id', deletePublicationController);
 
 export default router;
