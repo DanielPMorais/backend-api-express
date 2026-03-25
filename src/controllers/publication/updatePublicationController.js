@@ -8,6 +8,6 @@ export async function updatePublicationController(req, res) {
 
     res.json({
         message: 'Publicação atualizada com sucesso!',
-        user: result,
+        publication: result,
     });
-}l
+}

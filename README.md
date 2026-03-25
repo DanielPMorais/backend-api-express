@@ -63,6 +63,9 @@ npx prisma generate -> gera as funções para interagir com os modelos mapeados 
 
 - Como utilizar os parâmetros de Url?
 - O que é um middleware?
+    - Resposta da IA: funções que são executadas em sequência durante o ciclo de vida de uma requisição HTTP, atuando como "interceptadores" entre a chegada do pedido do cliente e o envio da resposta pelo servidor (req, res).
+
+    - É um padrao de projeto que cria um fluxo de execução de funções onde cada função é chamada de middleware. cada middleware vai resolver uma parte de um problema e passar para o próximo middleware.
 
 ---------
 
