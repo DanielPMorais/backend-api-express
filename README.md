@@ -67,6 +67,11 @@ npx prisma generate -> gera as funções para interagir com os modelos mapeados 
 
     - É um padrao de projeto que cria um fluxo de execução de funções onde cada função é chamada de middleware. cada middleware vai resolver uma parte de um problema e passar para o próximo middleware.
 
+    - Principais middlewares utilizados no express: 
+        - express.json(): Analisa (parsa) requisições de entrada com payloads JSON.
+        - express.urlencoded(): Analisa requisições com dados codificados em URL (como formulários HTML).
+        - express.static(): Utilizado para servir arquivos estáticos (imagens, CSS, JavaScript frontend) de forma eficiente.
+
 ---------
 
 - Validação de Dados
