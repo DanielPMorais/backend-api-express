@@ -60,3 +60,12 @@ npx prisma db pull -> gera schema no prisma a partir do bd
 npx prisma db push -> gera tabelas no bd a partir do schema do prisma
 
 npx prisma generate -> gera as funções para interagir com os modelos mapeados no schema
+
+- Como utilizar os parâmetros de Url?
+- O que é um middleware?
+
+---------
+
+- Validação de Dados
+- Tratamentos de Erros
+- Autenticação com JWT
