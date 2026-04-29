@@ -1,10 +1,19 @@
-import { createPublication } from "../../models/publicationModel.js"
+import { createPublication, validatePublication } from "../../models/publicationModel.js"
 
 export async function createPublicationController(req, res) {
 
     const publication = req.body;
 
-    const result = await createPublication(publication);
+    const { success, data, error } = validatePublication(publication, { id: true });
+
+    if (!success) {
+        return res.status(400).json({
+            message: "Erro de validação",
+            fieldErrors: error.flatten().fieldErrors
+        });
+    }
+
+    const result = await createPublication(data);
 
     // {
     //  "title": "Meu primeiro post"

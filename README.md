@@ -94,6 +94,8 @@ npx prisma generate -> gera as funções para interagir com os modelos mapeados 
 
 Próximos Tópicos:
 
-- Validação de Dados
+- Validação de Dados com Zod
 - Tratamentos de Erros
 - Autenticação com JWT
+
+*Expressões regulares*
