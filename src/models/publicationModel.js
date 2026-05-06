@@ -4,10 +4,10 @@ import { createValidator } from '../helpers/createValidator.js';
 
 const publicationSchema = z.object({
     id: z.number().positive(),
-    title: z.string().max(20),
-    description: z.string().max(150).optional(),
+    title: z.string().max(255),
+    description: z.string().max(10000).optional(),
     created_at:  z.date().optional(),
-    author: z.string().max(25).optional()
+    author: z.string().max(255).optional()
 });
 
 export const validatePublication = createValidator(publicationSchema)
