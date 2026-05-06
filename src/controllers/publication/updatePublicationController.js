@@ -7,6 +7,13 @@ export async function updatePublicationController(req, res) {
 
     const { success, error, data: publicationValidated } = validatePublication(publication)
     
+    if (!success) {
+        return res.status(400).json({
+            message: "Erro de validação",
+            fieldErrors: error
+        });
+    }
+
     const result = await updatePublication(publicationValidated, publicationValidated.id);
 
     res.json({

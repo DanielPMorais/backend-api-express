@@ -9,7 +9,7 @@ export async function createPublicationController(req, res) {
     if (!success) {
         return res.status(400).json({
             message: "Erro de validação",
-            fieldErrors: flattenError(error).fieldErrors
+            fieldErrors: error
         });
     }
 
