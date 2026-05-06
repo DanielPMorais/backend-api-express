@@ -92,11 +92,15 @@ npx prisma generate -> gera as funções para interagir com os modelos mapeados 
 
 ---
 
-Próximos Tópicos:
-
 - Validação de Dados com Zod
+
   - Para que serve a biblioteca do zod?
     - biblioteca para validação de schemas muito usada para definir regras de negócios na camada de modelo
+  - Para que serve a função 'Partial'?
+    - uma forma de flexibilizar o que é obrigatório pontualmente algo que é obrigatório na validação
+  - Qual a diferença do 'Parse' para o 'safeParse'?
+    - quando tiver um erro de validação, o Parse lança uma excessão; o safeParse, quando gerado um erro de validação devolve o erro dentro de um objeto.
+
 - Tratamentos de Erros
 - Autenticação com JWT
 
