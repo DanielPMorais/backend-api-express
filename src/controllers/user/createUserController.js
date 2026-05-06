@@ -9,7 +9,7 @@ export async function createUserController(req, res) {
     if (!success) {
         return res.status(400).json({
             message: "Erro de validação",
-            fieldErrors: error.flatten().fieldErrors
+            fieldErrors: error
         });
     }
 

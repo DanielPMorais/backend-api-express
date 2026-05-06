@@ -1,5 +1,6 @@
 import { prisma } from '../helpers/dbConnection.js';
 import * as z from 'zod';
+import { createValidator } from '../helpers/createValidator.js';
 
 const publicationSchema = z.object({
     id: z.number().positive(),
@@ -9,12 +10,7 @@ const publicationSchema = z.object({
     author: z.string().max(25).optional()
 });
 
-export const validatePublication = (publication, partial = false) => {
-    if (partial) {
-        return publicationSchema.partial(partial).safeParse(publication)
-    }
-    return publicationSchema.safeParse(publication)
-}
+export const validatePublication = createValidator(publicationSchema)
 
 export const createPublication = async (publication) => {
     return await prisma.publication.create({

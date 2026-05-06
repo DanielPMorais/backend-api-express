@@ -9,23 +9,11 @@ export async function createPublicationController(req, res) {
     if (!success) {
         return res.status(400).json({
             message: "Erro de validação",
-            fieldErrors: error.flatten().fieldErrors
+            fieldErrors: flattenError(error).fieldErrors
         });
     }
 
     const result = await createPublication(data);
-
-    // {
-    //  "title": "Meu primeiro post"
-    //  "description": "Descrição do meu post"
-    //}
-
-    //     {
-    //   "name": "daniel",
-    //   "email": "daniel.morais@gmail.com",
-    //   "pass": "123456",
-    //   "avatar": "https://github.com/danielpmorais.png"
-    //     }
 
     res.json({
         message: "Publicação criada com sucesso!",
