@@ -95,6 +95,8 @@ npx prisma generate -> gera as funções para interagir com os modelos mapeados 
 Próximos Tópicos:
 
 - Validação de Dados com Zod
+  - Para que serve a biblioteca do zod?
+    - biblioteca para validação de schemas muito usada para definir regras de negócios na camada de modelo
 - Tratamentos de Erros
 - Autenticação com JWT
 
