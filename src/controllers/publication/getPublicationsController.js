@@ -1,12 +1,14 @@
-import { getPublication } from '../../models/publicationModel.js'
+import { getPublication } from "../../models/publicationModel.js";
 
 export async function getPublicationsController(req, res) {
-    
+  try {
     const result = await getPublication();
 
     res.json({
-        message: "Publicações listadas com sucesso!",
-        publications: result 
+      message: "Publicações listadas com sucesso!",
+      publications: result,
     });
-    
+  } catch {
+    next(error);
+  }
 }

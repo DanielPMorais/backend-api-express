@@ -1,29 +1,34 @@
-import { createUser, validateUser } from "../../models/userModel.js"
+import { createUser, validateUser } from "../../models/userModel.js";
 
-export async function createUserController(req, res) {
-
+export async function createUserController(req, res, next) {
+  try {
     const user = req.body;
 
     const { success, error, data } = validateUser(user, { id: true });
 
     if (!success) {
-        return res.status(400).json({
-            message: "Erro de validação",
-            fieldErrors: error
-        });
+      return res.status(400).json({
+        message: "Erro de validação",
+        fieldErrors: error,
+      });
     }
-
-    //     {
-    //   "name": "daniel",
-    //   "email": "daniel.morais@gmail.com",
-    //   "pass": "123456",
-    //   "avatar": "https://github.com/danielpmorais.png"
-    //     }
 
     const result = await createUser(data);
 
-    res.json({
-        message: "Usuário criado com sucesso!",
-        user: result
+    return res.json({
+      message: "Usuário criado com sucesso!",
+      user: result,
     });
+  } catch (error) {
+    if (error.code === "P2002" && error.message.includes("email")) {
+      console.log(error.message);
+      return res.status(400).json({
+        message: "Erro de validação",
+        fieldErrors: {
+          email: ["O email já está em uso por outro usuário."],
+        },
+      });
+    }
+    next(error);
+  }
 }
