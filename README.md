@@ -102,6 +102,19 @@ npx prisma generate -> gera as funções para interagir com os modelos mapeados 
     - quando tiver um erro de validação, o Parse lança uma excessão; o safeParse, quando gerado um erro de validação devolve o erro dentro de um objeto.
 
 - Tratamentos de Erros
+  - Qual o papel do ErrorHandler?
+    quando é lançada uma exceção, ele é lançado no servidor com uma resposta amigável genérica para evitar que o servidor pare.
+  - Quais erros devem ser tratados pelo ErrorHandler e quais devem ser tratados no try catch do controller?
+    ErrorHandler: erros genéricos; Try catch: erros mais específicos que podem ser tratados dentro do controller;
+  - Quais os parâmetros de entrada de um middleware de ErrorHandler?
+    (error, req, res, next). - precisa do next, pq ele olha por quantidade de parâmetros.
+
+- Query Params (/name/?=name=renan)
+  - Como capturar um parâmetro query da url no controller?
+    Através do req.query.
+  - Para que são utilizados em geral os query params?
+    Para filtros, em gets.
+
 - Autenticação com JWT
 
 *Expressões regulares*
