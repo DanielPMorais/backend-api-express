@@ -18,8 +18,16 @@ export const createPublication = async (publication) => {
     });
 }
 
-export const getPublication = async () => {
-    return await prisma.publication.findMany();
+export const getPublication = async (title) => {
+    return await prisma.publication.findMany(
+        title ? {
+            where: {
+                title: {
+                    contains: title
+                }
+            }
+        } : {}
+    );
 }
 
 export const deletePublication = async (id) => {

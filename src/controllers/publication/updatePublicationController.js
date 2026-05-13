@@ -31,7 +31,7 @@ export async function updatePublicationController(req, res, next) {
       message: "Publicação atualizada com sucesso!",
       publication: result,
     });
-  } catch {
+  } catch (error) {
     if (error.code === "P2025") {
       console.log(error.message);
       return res.status(404).json({

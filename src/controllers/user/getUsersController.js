@@ -2,7 +2,8 @@ import { getUsers } from "../../models/userModel.js";
 
 export async function getUsersController(req, res, next) {
   try {
-    const result = await getUsers();
+    const { name } = req.query;
+    const result = await getUsers(name);
 
     res.json({
       message: "Usuários listados com sucesso",
