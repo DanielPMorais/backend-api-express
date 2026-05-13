@@ -3,7 +3,7 @@ import {
   validatePublication,
 } from "../../models/publicationModel.js";
 
-export async function createPublicationController(req, res) {
+export async function createPublicationController(req, res, next) {
   try {
     const publication = req.body;
 

@@ -3,7 +3,7 @@ import {
   validatePublication,
 } from "../../models/publicationModel.js";
 
-export async function deletePublicationController(req, res) {
+export async function deletePublicationController(req, res, next) {
   try {
     const id = req.params.id;
 

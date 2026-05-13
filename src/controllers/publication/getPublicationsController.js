@@ -1,6 +1,6 @@
 import { getPublication } from "../../models/publicationModel.js";
 
-export async function getPublicationsController(req, res) {
+export async function getPublicationsController(req, res, next) {
   try {
     const result = await getPublication();
 

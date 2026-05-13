@@ -1,6 +1,6 @@
 import { deleteUser, validateUser } from "../../models/userModel.js";
 
-export async function deleteUserController(req, res) {
+export async function deleteUserController(req, res, next) {
   try {
     const id = req.params.id;
 
