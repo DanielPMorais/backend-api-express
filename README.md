@@ -116,5 +116,26 @@ npx prisma generate -> gera as funções para interagir com os modelos mapeados 
     Para filtros, em gets.
 
 - Autenticação com JWT
+  - Quais as diferenças dos métodos de Autenticação? E como funciona?
+    Cada método se difere no quesito segurança e consumo de processanto, e eles são:
+    - Basic Access ou Auth - Base64 (email:pass)
+      a cada requisição html, o cliente envia as credenciais (user:pass) codificadas em base64 para o header assim: Authorization: Basic dXN1YXJpbzpzZW5oYQ==;
+      não é seguro pq não é criptografia e podemos decodificá-lo facilmente.
+    - Bearer Token (Opaque)
+      O usuário envia o user e pass uma vez e o servidor valida, gera uma string aleatória (ex: xyz1234) e salva no banco de dados/sessão. A cada requisição, o cliente envia o token e o servidor consulta o banco de dados para validar se o token é válido.
+    - Bearer Token JWT
+      Diferente do Bearer Token opaque, o jwt é um token *autocontido*, ou seja, não é um código aleatório; ele carrega dados dentro dele.
+      O usuario faz o login. O server cria um JSON com os dados não críticos do usuário (Payload), adiciona as instruções de segurança (header) e assina tudo com a chave secreta. O servidor entrega esse token ao cliente e não guarda nada no banco.
+      Quando o cliente envia o JWT na requisição, o servidor não consulta o banco. Ele apenas faz um cálculo matemático usando a chave secreta dele para verificar se a chave é válida. Se for, ele confia nas informações que estão escritas dentro do proprio token. Isso economiza muito processamento e consultas no banco.
+    - Bearer Token JWT + Refresh Token
+      O JWT resolve o problema do banco de dados, mas traz um novo risco: se alguém roubar o seu JWT, essa pessoa terá acesso ao sistema até o token expirar, e o servidor não tem como "cancelar" o token facilmente (já que ele não consulta o banco). Para resolver isso, usamos a dupla dinâmica:
+
+      Access Token (JWT): Tem um tempo de vida muito curto (ex: 15 minutos). É usado para acessar as APIs rapidamente.
+
+      Refresh Token: É uma string aleatória (geralmente opaca), salva no banco de dados, com um tempo de vida longo (ex: 30 dias). Ele fica guardado em um lugar muito seguro no cliente.
+
+      A dança dos tokens: Quando o JWT de 15 minutos expira, o cliente não pede para o usuário fazer login de novo. Em segundo plano, o cliente envia o Refresh Token para o servidor. O servidor valida no banco e, se estiver tudo certo, gera um novo JWT válido por mais 15 minutos.
+  - Quais as características do JWT?
+    O payload e o header são sempre visíveis e só quem conhece a assitatura (secret) consegue gerar o token
 
 *Expressões regulares*
