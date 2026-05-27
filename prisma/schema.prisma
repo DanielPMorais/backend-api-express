@@ -13,6 +13,8 @@ model user {
   name   String @db.VarChar(255)
   email  String @unique
   pass   String @db.VarChar(300)
+  
+  sessions session[]
 }
 
 model publication {
@@ -21,4 +23,13 @@ model publication {
   description String?   @db.Text
   created_at  DateTime? @default(now()) @db.Timestamp(0)
   author      String?   @unique(map: "author") @db.VarChar(255)
+}
+
+model session {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  token     String   @db.VarChar(500)
+  createdAt DateTime @default(now()) @db.Timestamp(0)
+
+  user user @relation(fields: [userId], references: [id])
 }
