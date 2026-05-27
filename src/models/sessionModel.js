@@ -13,7 +13,7 @@ export const getSessionByToken = async (token, userId) => {
   return await prisma.session.findUnique({
     where: {
       token,
-      userId
+      userId,
     },
   });
 };
@@ -22,7 +22,7 @@ export const deleteSession = async (token, userId) => {
   return await prisma.session.delete({
     where: {
       token,
-      userId
+      userId,
     },
   });
 };
