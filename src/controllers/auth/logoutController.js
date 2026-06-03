@@ -3,14 +3,15 @@ import { deleteSession } from "../../models/sessionModel.js";
 export async function logoutController(req, res, next) {
   try {
     const token = req.cookies.refreshToken || req.body.refreshToken;
-    const userId = req.body.userId;
+    const userId = req.userId;
 
     if (!token) {
       return res.status(400).json({
         message: "RefreshToken não fornecido.",
       });
     }
-    const result = await deleteSession(token, userId);
+
+    await deleteSession(token, userId);
 
     res.clearCookie("refreshToken", {
       httpOnly: true,

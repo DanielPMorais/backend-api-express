@@ -10,7 +10,7 @@ export const createSession = async (userId, token) => {
 };
 
 export const getSessionByToken = async (token, userId) => {
-  return await prisma.session.findUnique({
+  return await prisma.session.findFirst({
     where: {
       token,
       userId,
@@ -19,7 +19,7 @@ export const getSessionByToken = async (token, userId) => {
 };
 
 export const deleteSession = async (token, userId) => {
-  return await prisma.session.delete({
+  return await prisma.session.deleteMany({
     where: {
       token,
       userId,
