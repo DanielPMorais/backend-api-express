@@ -26,3 +26,11 @@ export const deleteSession = async (token, userId) => {
     },
   });
 };
+
+export const deleteAllSessionsByUserId = async (userId) => {
+  return await prisma.session.deleteMany({
+    where: {
+      userId,
+    },
+  });
+};
